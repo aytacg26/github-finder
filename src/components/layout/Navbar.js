@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+//Will be converted to functional based component
 class Navbar extends Component {
   render() {
     return (
