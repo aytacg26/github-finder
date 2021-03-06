@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
 const UserItem = (props) => {
   const { login, avatar_url: avatar, html_url: userLink } = props.user;
@@ -15,8 +16,16 @@ const UserItem = (props) => {
       />
       <h2>{login}</h2>
       <div>
-        <a href={userLink} className='btn btn-dark btn-sm my-1'>
-          More
+        <NavLink to={`/user/${login}`} className='btn btn-dark btn-sm my-1'>
+          Profile
+        </NavLink>
+        <a
+          href={userLink}
+          className='btn btn-dark btn-sm my-1'
+          target='_blank'
+          rel='noreferrer'
+        >
+          <i className='fab fa-github'></i>
         </a>
       </div>
     </div>
