@@ -31,9 +31,11 @@ class App extends Component {
       `https://api.github.com/search/users?q=${text}&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
     );
 
-    console.log(res.data.items);
     this.setState({ users: res.data.items, loading: false });
   };
+
+  //Clear Users from State
+  handleClear = () => this.setState({ users: [], loading: false });
 
   render() {
     const { loading, users } = this.state;
@@ -41,7 +43,11 @@ class App extends Component {
       <div className='App'>
         <Navbar />
         <div className='container'>
-          <Search searchUsers={this.handleSearch} />
+          <Search
+            searchUsers={this.handleSearch}
+            clearUsers={this.handleClear}
+            hasUsers={users.length > 0}
+          />
           <Users users={users} loading={loading} />
         </div>
       </div>
